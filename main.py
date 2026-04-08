@@ -78,5 +78,3 @@ async def friends(ctx, user_id):
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 bot.run(TOKEN)
-
-bot.run(TOKEN)
