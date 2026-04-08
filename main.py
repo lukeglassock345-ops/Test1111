@@ -2,13 +2,14 @@ import os
 import random
 import asyncio
 import requests
+import discord
 from discord.ext import commands
 
-# Load cookies
-with open('cookies.txt', 'r') as cookies:
-    cookies1 = cookies.read().splitlines()
+# Load cookies from Railway variable
+cookies_env = os.getenv("COOKIES", "")
+cookies1 = cookies_env.split(",") if cookies_env else []
 
-intents = commands.Intents.default()
+intents = discord.Intents.default()
 bot = commands.Bot(command_prefix='.?', intents=intents)
 
 @bot.event
@@ -76,4 +77,6 @@ async def friends(ctx, user_id):
     await ctx.send("Finished sending friend requests!")
 
 TOKEN = os.getenv("DISCORD_TOKEN")
+bot.run(TOKEN)
+
 bot.run(TOKEN)
